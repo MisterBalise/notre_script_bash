@@ -13,5 +13,16 @@ for lettre in {A..Z}
 do
 	    occurrences=`grep $lettre $1 | wc -l`
 	        echo "$occurrences - $lettre" >> stats.txt
-	done
+done
+	n trie numériquement les stats et on affiche le résultat
+	# Mon petit ajout : le paramètre --letters qui demande de n'afficher que les lettres
+if [ $# -ge 2 ] && [ $2 = '--letters' ]
+then
+	sort -nr stats.txt | cut -f2 -d'-'
+else
+		        sort -nr stats.txt
+fi
+
+# On peut supprimer le fichier de travail stats.txt
+rm stats.txt
 
